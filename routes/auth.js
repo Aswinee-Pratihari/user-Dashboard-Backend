@@ -95,7 +95,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/detail", TokenVerification, async (req, res) => {
+router.get("/check", TokenVerification, async (req, res) => {
   return res.status(200).json({ ...req.user._doc });
 });
 export default router;
