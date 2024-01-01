@@ -2,7 +2,7 @@ import express from "express";
 import User from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
+import { TokenVerification } from "../middleware/auth.js";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
@@ -93,5 +93,9 @@ router.post("/login", async (req, res) => {
     console.log(err);
     return res.status(500).json({ error: err.message });
   }
+});
+
+router.get("/detail", TokenVerification, async (req, res) => {
+  return res.status(200).json({ ...req.user._doc });
 });
 export default router;
