@@ -12,7 +12,7 @@ app.use(cors());
 app.use("/api", authRoute);
 app.use("/api/contacts", contactRoute);
 app.get("/", (req, res) => {
-  res.send("hello worl");
+  res.send("hello world !!");
 });
 const port = process.env.PORT;
 connectDB().then(() => {
